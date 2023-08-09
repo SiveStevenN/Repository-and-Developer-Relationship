@@ -1,0 +1,35 @@
+using System;
+
+// Repository class
+class Repository {
+    public void SaveFile(string fileName) {
+        Console.WriteLine($"Repository: Saving file '{fileName}' to the repository.");
+    }
+}
+
+// Software Developer class
+class SoftwareDeveloper {
+    private Repository repository;
+
+    public SoftwareDeveloper(Repository repo) {
+        repository = repo;
+    }
+
+    public void UpdateAndSaveFile(string fileName) {
+        Console.WriteLine($"Developer: Updating file '{fileName}'.");
+        repository.SaveFile(fileName);
+        Console.WriteLine($"Developer: File '{fileName}' updated and saved to the repository.");
+    }
+}
+
+class Program {
+    static void Main(string[] args) {
+        Repository repo = new Repository();
+        SoftwareDeveloper developer = new SoftwareDeveloper(repo);
+
+        string fileName = "main.cs";
+        developer.UpdateAndSaveFile(fileName);
+
+        Console.ReadLine();
+    }
+}
